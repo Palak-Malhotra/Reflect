@@ -32,7 +32,7 @@
 .form-box h1{
     font-size: 30px;
     margin-top: 20px;
-    margin-bottom: 60px ;
+    margin-bottom: 40px ;
     color: #900C3F;
     position: relative;
 }
@@ -95,33 +95,49 @@ input{
     color: #717171;
 }
 
+.social-container {
+	margin: 20px 0;
+    
+}
+
+.social-container a {
+	border: 1px solid #DDDDDD;
+    background-color: rgba(257, 124, 155, 0.5);
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 50px;
+	width: 50px;
+}
 /* .input-group{
     height: 280px;
 } */
 /*Name: Pearly Purple
 Hex: #B0739C
-RGB: (176, 115, 156)
+rgba(176, 115, 156)
 CMYK: 0, 0.346, 0.113, 0.309
 SHIMMERING BLUSH	
 Name: Shimmering Blush
 Hex: #DD7C9B
-RGB: (221, 124, 155)
+rgba(221, 124, 155)
 AMERICAN PINK	
 Name: American Pink
 Hex: #F6949B
-RGB: (246, 148, 155)
+rgba(246, 148, 155)
 MAUVELOUS	
 Name: Mauvelous
 Hex: #F7ABA4
-RGB: (247, 171, 164)
+rgba(247, 171, 164)
 CMYK: 0, 0.307, 0.336, 0.031
 APRICOT	
 Name: Apricot
 Hex: #F7C9B5
-RGB: (247, 201, 181)
+rgba(247, 201, 181)
 CMYK: 0, 0.186, 0.267, 0.031
 OLD LAVENDER	
 Name: Old Lavender
 Hex: #756180
-RGB: (117, 97, 128)
+rgba(117, 97, 128)
 CMYK: 0.085, 0.242, 0, 0.498*/

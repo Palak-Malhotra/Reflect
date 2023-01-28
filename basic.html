@@ -11,7 +11,17 @@
       <div class="container">
         <div class="form-box">
             <h1 id = "title">Sign Up</h1>
+            <div class="social-container">
+                    <a href="#" class="social" style = "text-decoration:None">
+                        <i class="fa-brands fa-facebook">
+                        </i></a>
+                    <a href="#" class="social" style = "text-decoration:None">
+                        <i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social" style = "text-decoration:None">
+                        <i class="fab fa-linkedin-in"></i></a>
+                </div>
             <form>
+                
                 <div class="input-group">
                     <div class="input-field" id = "nameField">
                         <i class="fa-solid fa-user"></i>
@@ -24,6 +34,10 @@
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" placeholder="Password">
+                    </div>
+                    <div class="input-field" id = "repassword">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Confirm Password">
                     </div>
                     <!-- <p>
                         Forgot password <a href = "#">Click Here !</a>  
@@ -41,9 +55,11 @@
         let signinBtn = document.getElementById("signinBtn");
         let nameField = document.getElementById("nameField");
         let title = document.getElementById("title");
+        let repassword = document.getElementById("repassword");
 
         signinBtn.onclick = function(){
             nameField.style.maxHeight = '0';
+            repassword.style.maxHeight = '0';
             title.innerHTML = "Sign In";
             signupBtn.classList.add("disable");
             signinBtn.classList.remove("disable");
@@ -51,6 +67,7 @@
         }
         signupBtn.onclick = function(){
             nameField.style.maxHeight = '60px';
+            repassword.style.maxHeight = '60px';
             title.innerHTML = "Sign Up";
             signinBtn.classList.add("disable");
             signupBtn.classList.remove("disable");
