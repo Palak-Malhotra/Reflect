@@ -37,11 +37,15 @@
             <div class="journalContainer">
                 <h2>What's on your mind today ?</h2>
                 <form id="diary-entry-form">
-                    <input 
-                        type ="text" 
+                    <textarea
                         id = "new-diary-entry"
                         name="new-diary-entry" 
-                        placeholder = "Dear diary.." />
+                        rows="20" cols="50"
+                        > Dear diary..
+                    </textarea>
+                    <button class = "btn-submit">
+                        Save
+                    </button>
                 </form>
             </div>
             <div class="calendarContainer"></div>
