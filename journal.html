@@ -9,36 +9,45 @@
         <script src="https://kit.fontawesome.com/4f078c44fb.js" crossorigin="anonymous"></script>
 
     </head>
-    <body>
-        <div class="container">
-        <header>
-            <h1>To-do List</h1>
-            <form id="new-task-form">
-            <div class="new-task-input">
-                <i class="fa-solid fa-pen"></i>
-                <input 
-                    type="text" 
-                    id = "new-task"
-                    name="new-task-input" 
-                    placeholder="I need to do .." />
+    <main>
+        <div class = "parentContainer">
+            <div class="toDoContainer">
+                <header>
+                    <h1>To-do List</h1>
+                    <form id="new-task-form">
+                        <div class="new-task-input">
+                            <i class="fa-solid fa-pen"></i>
+                            <input 
+                                type="text" 
+                                id = "new-task"
+                                name="new-task-input" 
+                                placeholder="I need to do .." />
+                        </div>
+                        <input 
+                            type="submit"
+                            id="new-task-submit" 
+                            value="Add task" />
+                    </form>
+                </header>
+                <section class="task-list">
+                    <h2>Tasks</h2>    
+                    <div id="tasks"></div>
+                </section>
             </div>
-                <input 
-                    type="submit"
-                    id="new-task-submit" 
-                    value="Add task" />
-            </form>
-        </header>
-        <main>
-            <section class="task-list">
-                <h2>Tasks</h2>
-    
-                <div id="tasks">
-    
-                </div>
-            </section>
-        </main>
-    </div>
+            <div class="journalContainer">
+                <h2>What's on your mind today ?</h2>
+                <form id="diary-entry-form">
+                    <input 
+                        type ="text" 
+                        id = "new-diary-entry"
+                        name="new-diary-entry" 
+                        placeholder = "Dear diary.." />
+                </form>
+            </div>
+            <div class="calendarContainer"></div>
+        </div>
+    </main>
         <script src="js/journaljs.js" ></script>
-</body>
+    </body>
 
 </html>
