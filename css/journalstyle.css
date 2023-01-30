@@ -272,15 +272,66 @@ main {
         padding-bottom: 11px;
     }
   
-.btn-stats button i {
-    margin: 10px;
-    color: #756180;
+
+#btn-stats-water{    
+    flex-basis: 48%;
+    margin-top: 25px;
+    padding: 20px;
+    position: absolute;
+    color: #487fff;
+    float: left;
+    transform: rotate(4deg);
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#btn-stats-walk{
+    flex-basis: 48%;
+    margin-top: 25px;
+    padding: 20px;
+    position: absolute;
+    color: #383838;
+    float: left;
     transform: rotate(4deg);
     transform-origin: center;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.btn-stats button i:active, .btn-stats button i:focus {
+#new-water-icons{
+    margin-top: 35px;
+    color: #3fbef4;
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+#new-walk-icons{
+    margin-top: 20px;
+    padding: 15px;
+    color: #48474a;
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+
+
+.water{
+    display: grid;
+}
+.walk{
+    display: grid;
+}
+
+.btn-stats{
+    display: block;
+}
+
+#btn-stats-water:active, #btn-stats-water:focus {
+    transform: translateY(4px);
+    outline: 0;
+  }
+
+#btn-stats-walk:active, #btn-stats-walk:focus {
     transform: translateY(4px);
     outline: 0;
   }

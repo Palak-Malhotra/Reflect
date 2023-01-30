@@ -61,12 +61,22 @@ window.addEventListener('load', () => {
 	});
 });
 
-let water_tracker = document.getElementsByClassName("#new-water-icons")
+// let water_tracker = document.getElementsByClassName(".new-water-icons")
 
-water_tracker.click() = function(){
-    const water_el = document.createElement(i)
-    console.log("created object")
-    water_el.className("fa-solid fa-glass-water")
-    water_tracker.appendChild(water_el)
+function add_water_icons(){
+    const water_element = document.createElement("i");
+    const attribute = document.createAttribute('class');
+    attribute.value = "fa-solid fa-glass-water";
+    water_element.setAttributeNode(attribute)
+    document.getElementById("new-water-icons").appendChild(water_element);
 }
 
+function add_walk_icons(){
+    const walk_element = document.createElement("i");
+    const attribute = document.createAttribute('class');
+    attribute.value = "fa-solid fa-stopwatch fa";
+    walk_element.setAttributeNode(attribute);
+    document.getElementById("new-walk-icons").appendChild(walk_element);
+
+
+}

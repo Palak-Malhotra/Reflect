@@ -6,6 +6,7 @@
         <title>Reflect : Sign In and Sign Up</title>
         <link rel = "stylesheet" href = "css\style.css">
         <script src="https://kit.fontawesome.com/4f078c44fb.js" crossorigin="anonymous"></script>
+        <script src="journal.html"></script>
     </head>
     <body>
       <div class="container">
@@ -40,7 +41,7 @@
                         <input type="password" id="confirmPasswordF" placeholder="Confirm Password">
                     </div>
                     <div class = "btn-submit">
-                        <button type = "submit" id = "submitBtn">Submit </button>
+                        <button type = "button" id = "submitBtn">Submit </button>
                     </div>
                 </div>
             </form>
@@ -105,54 +106,54 @@
         const provider = new GoogleAuthProvider();
 
         document.getElementById("submitBtn").addEventListener('click', function(){
-                var name = document.getElementById("nameF").value
-                var email = document.getElementById("emailF").value
-                var password = document.getElementById("passwordF").value
-                var confirm = document.getElementById("confirmPasswordF").value
-                if(title.innerHTML == "Sign Up" && (password == confirm)){
-                    createUserWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed in 
-                        const user = userCredential.user;
-                        // ...
-                        alert("Registration successfully!!");
-                        //location.href = "https://github.com/Palak-Malhotra/Reflect";
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        // ..
-                        //console.log(errorCode + errorMessage)
-                        alert(errorMessage);
-                    });
-                }
-                else{
-                    signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed in 
-                        const user = userCredential.user;
-                        function writeUserData(name, email) {
-                            set(ref(database, 'users/' + name), {
-                                name: name,
-                                email: email,
-                                last_login : Date.now()
-                            });
-                        }
-                        writeUserData(name, email);
-                        // ...
-                        alert("SignIn successfully!!");
-                        //location.href = "https://github.com/Palak-Malhotra/Reflect";
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        // ..
-                        //console.log(errorCode + errorMessage)
-                        alert(errorMessage);
-                    });
-                }
+            var name = document.getElementById("nameF").value
+            var email = document.getElementById("emailF").value
+            var password = document.getElementById("passwordF").value
+            var confirm = document.getElementById("confirmPasswordF").value
+            if(title.innerHTML == "Sign Up" && (password == confirm)){
+                createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    // ...
+                    alert("Registration successfully!!");
+                    //location.href = "https://github.com/Palak-Malhotra/Reflect";
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    //console.log(errorCode + errorMessage)
+                    alert(errorMessage);
+                });
+            }
+            else{
+                signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    function writeUserData(name, email) {
+                        set(ref(database, 'users/' + name), {
+                            name: name,
+                            email: email,
+                            last_login : Date.now()
+                        });
+                    }
+                    writeUserData(name, email);
+                    // ...
+                    alert("SignIn successfully!!");
+                    //location.href = "https://github.com/Palak-Malhotra/Reflect";
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                    //console.log(errorCode + errorMessage)
+                    alert(errorMessage);
+                });
+            }
 
-            })
+        })
         document.getElementById("logGoogle").addEventListener('click', function(){
             signInWithPopup(auth, provider)
             .then((result) => {
