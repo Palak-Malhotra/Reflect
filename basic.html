@@ -6,42 +6,41 @@
         <title>Reflect : Sign In and Sign Up</title>
         <link rel = "stylesheet" href = "css\style.css">
         <script src="https://kit.fontawesome.com/4f078c44fb.js" crossorigin="anonymous"></script>
-
     </head>
     <body>
       <div class="container">
         <div class="form-box">
             <h1 id = "title">Sign Up</h1>
             <div class="social-container">
-                <a href="#" class="social" style = "text-decoration:None">
-                    <i class="fa-brands fa-facebook">
-                    </i></a>
-                <a href="#" class="social" style = "text-decoration:None">
-                    <i class="fa-brands fa-google"></i></a>
-                <a href="#" class="social" style = "text-decoration:None">
-                    <i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social" style = "text-decoration:None">
+                        <i class="fa-brands fa-facebook">
+                        </i></a>
+                    <a href="#" class="social" style = "text-decoration:None">
+                        <i class="fa-brands fa-google" id = "logGoogle"></i></a>
+                    <a href="#" class="social" style = "text-decoration:None">
+                        <i class="fab fa-linkedin-in"></i></a>
                 </div>
             <form>
                 
                 <div class="input-group">
                     <div class="input-field" id = "nameField">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Name">
+                        <input type="text" id="nameF" placeholder="Name">
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" placeholder="Email">
+                        <input type="email" id="emailF" placeholder="Email">
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Password">
+                        <input type="password" id="passwordF" placeholder="Password">
                     </div>
                     <div class="input-field" id = "repassword">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Confirm Password">
+                        <input type="password" id="confirmPasswordF" placeholder="Confirm Password">
                     </div>
                     <div class = "btn-submit">
-                        <button type = "button" id = "submitBtn">Submit </button>
+                        <button type = "submit" id = "submitBtn">Submit </button>
                     </div>
                 </div>
             </form>
@@ -57,7 +56,6 @@
         let nameField = document.getElementById("nameField");
         let title = document.getElementById("title");
         let repassword = document.getElementById("repassword");
-
         signinBtn.onclick = function(){
             nameField.style.maxHeight = '0';
             repassword.style.maxHeight = '0';
@@ -74,8 +72,112 @@
             signupBtn.classList.remove("disable");
 
         }
+        
+
 
       </script>
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDr90uHLKuWDiKWEwtC95ciSvAsrAK51zM",
+          authDomain: "reflect-30964.firebaseapp.com",
+          projectId: "reflect-30964",
+          storageBucket: "reflect-30964.appspot.com",
+          messagingSenderId: "58214232785",
+          appId: "1:58214232785:web:585f4d3c638941d18a8bf0",
+          measurementId: "G-NQZ33JP9X8"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+        const provider = new GoogleAuthProvider();
+
+        document.getElementById("submitBtn").addEventListener('click', function(){
+                var name = document.getElementById("nameF").value
+                var email = document.getElementById("emailF").value
+                var password = document.getElementById("passwordF").value
+                var confirm = document.getElementById("confirmPasswordF").value
+                if(title.innerHTML == "Sign Up" && (password == confirm)){
+                    createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        // ...
+                        alert("Registration successfully!!");
+                        //location.href = "https://github.com/Palak-Malhotra/Reflect";
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        // ..
+                        //console.log(errorCode + errorMessage)
+                        alert(errorMessage);
+                    });
+                }
+                else{
+                    signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        function writeUserData(name, email) {
+                            set(ref(database, 'users/' + name), {
+                                name: name,
+                                email: email,
+                                last_login : Date.now()
+                            });
+                        }
+                        writeUserData(name, email);
+                        // ...
+                        alert("SignIn successfully!!");
+                        //location.href = "https://github.com/Palak-Malhotra/Reflect";
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        // ..
+                        //console.log(errorCode + errorMessage)
+                        alert(errorMessage);
+                    });
+                }
+
+            })
+        document.getElementById("logGoogle").addEventListener('click', function(){
+            signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+                console.log(errorMessage)
+            });
+        })
+
+      </script>
+      <script src="scripts/auth.js"></script>
     </body>
 
 </html>
