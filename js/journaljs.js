@@ -60,3 +60,13 @@ window.addEventListener('load', () => {
 		});
 	});
 });
+
+let water_tracker = document.getElementsByClassName("#new-water-icons")
+
+water_tracker.click() = function(){
+    const water_el = document.createElement(i)
+    console.log("created object")
+    water_el.className("fa-solid fa-glass-water")
+    water_tracker.appendChild(water_el)
+}
+
