@@ -10,7 +10,6 @@
         
 
     </head>
-    <body>
     <main>
         <div class = "parentContainer">
             <div class="toDoContainer">
@@ -80,7 +79,7 @@
             // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js";
-            import { getFirestore, collection, addDoc, doc, deleteDoc} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+            import { getFirestore, collection, addDoc, doc, deleteDoc, getDocs} from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
             // TODO: Add SDKs for Firebase products that you want to use
             // https://firebase.google.com/docs/web/setup#available-libraries
         
@@ -102,6 +101,15 @@
             const analytics = getAnalytics(app);
             const db = getFirestore(app);
 
+            async function read_data(email){
+                const array = [];
+                const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
+                querySnapshot.forEach((doc) => {
+                console.log(`${doc.data().text}`);
+                array.push(doc.data().text);
+                });
+            }
+            read_data(email);
             document.getElementById("new-task-submit").addEventListener('click', function(){
                 const form = document.querySelector("#new-task-form");
                 const input = document.getElementById("new-task");
@@ -111,7 +119,7 @@
                 try {
                     addDoc(collection(db, email + '/todo-items/' + 'unfinished'), {
                         text : task,
-                        status : "active"
+                        status : "active",
                     });
                     alert("Saved successfully!!");
                 }
@@ -128,13 +136,13 @@
 
             document.getElementById("btn-diary-submit").addEventListener('click', function(){
                 //e.preventDefault();
-                const i = document.getElementById("new-diary-entry");
-                const t = i.value;
-                console.log(i)
+                const input = document.getElementById("new-diary-entry");
+                const task = input.value;
+                console.log(input)
                 try {
                     addDoc(collection(db, email + '/diary_entry/' + 'unfinished'), {
-                        text : t,
-                        status : "active"
+                        text : task,
+                        status : "active",
                     });
                     alert("Saved successfully!!");
                 }
