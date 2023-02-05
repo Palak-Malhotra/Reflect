@@ -100,7 +100,6 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
             const db = getFirestore(app);
-
             async function read_data(email){
                 const read_tasks = [];
                 const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
@@ -108,6 +107,8 @@
                 console.log(`${doc.data().text}`);
                 read_tasks.push(doc.data().text);
                 });
+                console.log(read_tasks.toString());
+                return read_tasks
             }
             read_data(email);
             document.getElementById("new-task-submit").addEventListener('click', function(){
