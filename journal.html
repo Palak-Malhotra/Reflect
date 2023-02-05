@@ -102,11 +102,11 @@
             const db = getFirestore(app);
 
             async function read_data(email){
-                const array = [];
+                const read_tasks = [];
                 const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
                 querySnapshot.forEach((doc) => {
                 console.log(`${doc.data().text}`);
-                array.push(doc.data().text);
+                read_tasks.push(doc.data().text);
                 });
             }
             read_data(email);
