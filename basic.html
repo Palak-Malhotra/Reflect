@@ -10,12 +10,12 @@
     </head>
     <body>
       <div class="container">
-        <div class = "btn-field">
-            <button type = "button" id = "signupBtn">Sign Up </button>
-            <button type = "button" id = "signinBtn" class = "disable">Sign In </button>
-        </div>
+        
         <div class="form-box">
-            <h1 id = "title">Sign Up</h1>
+            <div class = "btn-field">
+                <button type = "button" id = "signupBtn">Sign Up </button>
+                <button type = "button" id = "signinBtn" class = "disable">Sign In </button>
+            </div>
             <div class="social-container">
                     <a href="#" class="social" style = "text-decoration:None">
                         <i class="fa-brands fa-facebook">
@@ -56,12 +56,10 @@
         let signupBtn = document.getElementById("signupBtn");
         let signinBtn = document.getElementById("signinBtn");
         let nameField = document.getElementById("nameField");
-        let title = document.getElementById("title");
         let repassword = document.getElementById("repassword");
         signinBtn.onclick = function(){
             nameField.style.maxHeight = '0';
             repassword.style.maxHeight = '0';
-            title.innerHTML = "Sign In";
             signupBtn.classList.add("disable");
             signinBtn.classList.remove("disable");
 
@@ -69,7 +67,6 @@
         signupBtn.onclick = function(){
             nameField.style.maxHeight = '60px';
             repassword.style.maxHeight = '60px';
-            title.innerHTML = "Sign Up";
             signinBtn.classList.add("disable");
             signupBtn.classList.remove("disable");
 

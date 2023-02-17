@@ -91,19 +91,27 @@ input{
 }
 
 .btn-field button{
+    font-size: 18px;
     flex-basis: 48%;
-    background: #FF6D90;
-    width: 100px;
+    background: #7f2338;
+    width: 150px;
     color: #fff;
     outline: 0;
     height: 40px;
-    margin-bottom: 30px ;
-    border-radius: 20px;
+    margin-top: 30px ;
+    margin-right: -5px;
     border: 0;
     cursor: pointer;
     transition: background 1s;
 }
 
+#signupBtn {
+    border-radius: 15px 0px 0px 15px;
+}
+
+#signinBtn {
+    border-radius: 0px 15px 15px 0px;
+}
 .btn-field button.disable{
     background: #DADADA;
     color: #717171;
