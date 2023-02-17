@@ -57,11 +57,13 @@
         let signinBtn = document.getElementById("signinBtn");
         let nameField = document.getElementById("nameField");
         let repassword = document.getElementById("repassword");
+        var titlee = "";
         signinBtn.onclick = function(){
             nameField.style.maxHeight = '0';
             repassword.style.maxHeight = '0';
             signupBtn.classList.add("disable");
             signinBtn.classList.remove("disable");
+            titlee = "Sign In";
 
         }
         signupBtn.onclick = function(){
@@ -69,6 +71,7 @@
             repassword.style.maxHeight = '60px';
             signinBtn.classList.add("disable");
             signupBtn.classList.remove("disable");
+            titlee = "Sign Up";
 
         }
     
@@ -106,13 +109,13 @@
             var email = document.getElementById("emailF").value
             var password = document.getElementById("passwordF").value
             var confirm = document.getElementById("confirmPasswordF").value
-            if(title.innerHTML == "Sign Up" && (password == confirm)){
+            if(titlee == "Sign Up" && (password == confirm)){
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
                     // ...
-                    alert("Registration successfully!!");
+                    alert("Registered successfully!!");
                     //location.href = "https://github.com/Palak-Malhotra/Reflect";
                 })
                 .catch((error) => {
