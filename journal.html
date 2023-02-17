@@ -77,7 +77,6 @@
     </main>
 
     <!-- <div id="page" class="w-screen h-screen bg-white transition-colors duration-500 p-2 md:p-10">
-
         <div id = "walk-modal" class="w-[80%] max-w-screen-md rounded-3xl bg-neutral-50 text-center antialiased px-5 md:px-20 py-10 shadow-2xl shadow-zinc-900 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <h1 class="text-2xl lg:text-3xl font-bold text-neutral-900 my-4">
                 ITS TIME TO TAKE A BREAK !
@@ -124,14 +123,22 @@
 
             async function read_data(email){
                     const read_tasks = [];
+                    const read_diary = [];
                     const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
+                    const getDiary = await getDocs(collection(db, email + '/diary_entry/' + 'unfinished'));
                     querySnapshot.forEach((doc) => {
                     console.log(`${doc.data().text}`);
                     read_tasks.push(doc.data().text);
                     });
                     console.log(read_tasks);
+
+                    getDiary.forEach((doc) => {
+                    console.log(`${doc.data().text}`);
+                    read_diary.push(doc.data().text);
+                    });
+                    console.log(read_diary);
                     //console.log(read_tasks.toString());
-                    return read_tasks;
+                    return read_tasks, read_diary;
                 }
 
             (async function(){              
