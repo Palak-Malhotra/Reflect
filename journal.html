@@ -75,6 +75,27 @@
             </div>
         </div>
     </main>
+
+    <!-- <div id="page" class="w-screen h-screen bg-white transition-colors duration-500 p-2 md:p-10">
+
+        <div id = "walk-modal" class="w-[80%] max-w-screen-md rounded-3xl bg-neutral-50 text-center antialiased px-5 md:px-20 py-10 shadow-2xl shadow-zinc-900 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <h1 class="text-2xl lg:text-3xl font-bold text-neutral-900 my-4">
+                ITS TIME TO TAKE A BREAK !
+        </h1>
+            <p class="text-base lg:text-xl text-neutral-500">
+                Step away from the screen and take a quick walk. You can go walk to the nearest water cooler or just 
+                stretch out a little.
+            </p>
+            <button type="button" id = "close-walk-modal" class="px-8 py-4 mt-8 rounded-2xl text-neutral-50 bg-violet-800 hover:bg-violet-600 active:bg-violet-900 disabled:bg-neutral-900 ">
+                Register Here!
+            </button>
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="w-[16px] h-[16px] absolute right-6 top-6">
+                <path d="m2 2 12 12m0-12-12 12" class="stroke-2 stroke-current" />
+            </svg>
+            </div>
+        </div>
+    </div> -->
+
         <script type="module">
             // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
@@ -100,17 +121,84 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
             const db = getFirestore(app);
+
             async function read_data(email){
-                const read_tasks = [];
-                const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
-                querySnapshot.forEach((doc) => {
-                console.log(`${doc.data().text}`);
-                read_tasks.push(doc.data().text);
-                });
-                console.log(read_tasks.toString());
-                return read_tasks
+                    const read_tasks = [];
+                    const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
+                    querySnapshot.forEach((doc) => {
+                    console.log(`${doc.data().text}`);
+                    read_tasks.push(doc.data().text);
+                    });
+                    console.log(read_tasks);
+                    //console.log(read_tasks.toString());
+                    return read_tasks;
+                }
+
+            (async function(){              
+                const read_tasks = await read_data(email);
+                const input = document.getElementById("new-task");
+                const list_el = document.querySelector("#tasks");
+                for(var task of read_tasks){
+                    if (task != ''){
+                    const task_el = document.createElement('div');
+                    task_el.classList.add('task');
+            
+                    const task_content_el = document.createElement('div');
+                    task_content_el.classList.add('content');
+            
+                    task_el.appendChild(task_content_el);
+            
+                    const task_input_el = document.createElement('input');
+                    task_input_el.classList.add('text');
+                    task_input_el.type = 'text';
+                    task_input_el.value = task;
+                    task_input_el.setAttribute('readonly', 'readonly');
+            
+                    task_content_el.appendChild(task_input_el);
+            
+                    const task_actions_el = document.createElement('div');
+                    task_actions_el.classList.add('actions');
+                    
+                    const task_edit_el = document.createElement('button');
+                    task_edit_el.classList.add('edit');
+                    task_edit_el.innerText = 'Edit';
+            
+                    const task_delete_el = document.createElement('button');
+                    task_delete_el.classList.add('delete');
+                    task_delete_el.innerText = 'Delete';
+            
+                    task_actions_el.appendChild(task_edit_el);
+                    task_actions_el.appendChild(task_delete_el);
+            
+                    task_el.appendChild(task_actions_el);
+            
+                    list_el.appendChild(task_el);
+            
+                    input.value = '';
+                    task_edit_el.addEventListener('click', (e) => {
+                        if (task_edit_el.innerText.toLowerCase() == "edit") {
+                            task_edit_el.innerText = "Save";
+                            task_input_el.removeAttribute("readonly");
+                            task_input_el.focus();
+                        } else {
+                            task_edit_el.innerText = "Edit";
+                            task_input_el.setAttribute("readonly", "readonly");
+                        }
+                    });
+            
+                    task_delete_el.addEventListener('click', (e) => {
+                        list_el.removeChild(task_el);
+                    });
+                }
+                    
+                };
             }
-            read_data(email);
+        )();
+            
+            window.onload = function(){
+                read_data(email);
+            }
+
             document.getElementById("new-task-submit").addEventListener('click', function(){
                 const form = document.querySelector("#new-task-form");
                 const input = document.getElementById("new-task");
@@ -157,6 +245,14 @@
 
                 
             })
+            /*window.onload = function(read_diary){
+                const my_diary = read_diary;
+                const text_area = document.getElementById("new-diary-entry");
+                text_area.appendChild(my_diary);
+            }*/
+            
+            
+            
             
         </script>
         <script>

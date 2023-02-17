@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font: 300 100% 'Poppins', Arial, sans-serif;
+    background-color: #EFF0F2;
+    color: #43464d;
+    padding: .25rem;
+    margin: 0;
+  }
+  
+  .dots {
+    border-radius: 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #70788D;
+    padding: 0;
+    display: inline-block;
+    margin: 0 0.1rem;
+    transition: .4s ease;
+  }
+  
+  .dots:target {
+    background-color: #70788D;
+  }
+  
+  #dotcontainer {
+    width: 4.35rem;
+    margin: 0 auto;
+    padding: 0;
+    height: 1.25rem;
+  }
+  
+  .page {
+    width: 25rem;
+    height: 30rem;
+    padding: 1rem;
+    position: fixed;
+    top: calc(50% - 14rem);
+    /*left: calc(50% - 10rem);*/
+    background-color: #DCDFE3;
+    transition: 1s ease;/* cubic-bezier(.31,.65,.57,.95);*/
+    opacity: 1;
+  }
+  
+  #v1:checked ~ #pagecontainer > .page {
+    top: calc(-75% - 12.5rem);
+    z-index: -1000;
+    
+  }
+  
+
+  
+  #v1 {
+    display: none;  
+}
+  
+.page hr {
+    height: .25rem;
+    background-color: #70788D;
+    border: none;
+    opacity: 0.25;
+}
+  
+.page h2 {
+    margin: 5px;
+    font-weight: normal;
+}
+.page h3 {
+    margin: 5px;
+    font-weight: normal;
+}
+.page p {
+    margin: 5px;
+    margin-top: 15px;
+    font-weight: normal;
+}
+
+  
+
+#pagecontainer {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 1rem);
+    top: 1.75rem;
+    left: 0;
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+    z-index: -1;
+}
+  
+  #page1:target ~ #pagecontainer > .p1 {
+    transform: rotateY(0deg);
+    left: calc(50% - 10rem);
+    opacity: 1;
+  }
+  
+  #page1:target ~ #pagecontainer > .p2 {
+    transform: rotateY(-60deg) translateZ(-130px);
+    left: calc(50% + 10rem);
+    opacity: 0.5;
+  }
+  
+  #page1:target ~ #pagecontainer > .p3 {
+    transform: rotateY(-90deg) translateZ(-190px);
+    left: calc(50% + 15rem);
+    opacity: 0.1;
+  }
+  
+  #page2:target ~ #pagecontainer > .p1 {
+    transform: rotateY(60deg) translateZ(-130px);
+    left: calc(50% - 30rem);
+    opacity: 0.5
+  }
+  
+  #page2:target ~ #pagecontainer > .p2 {
+    transform: rotateY(0deg);
+    left: calc(50% - 10rem);
+    opacity: 1;
+  }
+  
+#page2:target ~ #pagecontainer > .p3 {
+    transform: rotateY(-60deg) translateZ(-130px);
+    left: calc(50% + 10rem);
+    opacity: 0.5;
+}
+  
+#page3:target ~ #pagecontainer > .p1 {
+    transform: rotateY(90deg) translateZ(-190px);
+    left: calc(50% - 35rem);
+    opacity: 0.1;
+}
+  
+#page3:target ~ #pagecontainer > .p2 {
+    transform: rotateY(60deg) translateZ(-130px);
+    left: calc(50% - 30rem);
+    opacity: 0.5;
+}
+  
+#page3:target ~ #pagecontainer > .p3 {
+    transform: rotateY(0deg);
+    left: calc(50% - 10rem);
+    opacity: 1;
+}

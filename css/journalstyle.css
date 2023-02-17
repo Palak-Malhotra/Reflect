@@ -5,6 +5,12 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap');
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
 :root {
     --darkp:rgba(117, 97, 128);
 	--purple: rgba(176, 115, 156);
@@ -274,10 +280,10 @@ main {
   
 
 #btn-stats-water{    
-    flex-basis: 48%;
+    flex-basis: auto;
     margin-top: 25px;
     padding: 20px;
-    position: absolute;
+    position: relative;
     color: #487fff;
     float: left;
     transform: rotate(4deg);
@@ -285,10 +291,10 @@ main {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 #btn-stats-walk{
-    flex-basis: 48%;
+    flex-basis: auto;
     margin-top: 25px;
     padding: 20px;
-    position: absolute;
+    position: relative;
     color: #383838;
     float: left;
     transform: rotate(4deg);
@@ -297,7 +303,7 @@ main {
 }
 
 #new-water-icons{
-    margin-top: 35px;
+    margin-top: 20px;
     color: #3fbef4;
     transform-origin: center;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -306,7 +312,7 @@ main {
 
 #new-walk-icons{
     margin-top: 20px;
-    padding: 15px;
+    padding: 5px;
     color: #48474a;
     transform-origin: center;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content = "width = device - width, initial-scale = 1.0">
+        <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Reflect : Meet Ella </title>
+        <link rel = "stylesheet" href = "css\quesstyle.css">
+
+    </head>
+    <body>
+        <div id="dotcontainer">
+            <div class="dots" id="page1" onclick="window.location.hash = '#page1';"></div><!--
+             --><div class="dots" id="page2" onclick="window.location.hash = '#page2';"></div><!--
+             --><div class="dots" id="page3" onclick="window.location.hash = '#page3';"></div>
+            
+            <div id="pagecontainer">
+              <div class="page p1" onclick="handlePageClick(event, this.className);">
+                <hr/>
+                  <h2>Meet Ella</h2>
+                  <h3>Your Virtual Diary Assistant </h3>
+                  <p>
+                    She will help you express and reflect on your emotions and feelings.
+                    Ella will put out prompts and reminders for you, and help you elevate 
+                    your mental, emotional and physical well being by reflecting.
+                  </p>
+                
+              </div>
+              <div class="page p2" onclick="handlePageClick(event, this.className);">
+                <hr />
+                  <h2>Personal</h2>
+              </div>
+              <div class="page p3" onclick="handlePageClick(event, this.className);">
+                <hr />
+                <h2>Entertainment</h2>
+              </div>
+            </div>
+          </div>
+          </div>
+        <script src="js/quesjs.js" ></script>
+    </body>
+</html>
