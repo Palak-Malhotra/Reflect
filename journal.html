@@ -43,7 +43,7 @@
                         id = "new-diary-entry"
                         name="new-diary-entry" 
                         rows="20" cols="50"
-                        > Dear diary..
+                        > 
                     </textarea>
                     <button id="btn-diary-submit" class = "btn-submit">
                         Save
@@ -122,27 +122,31 @@
             const db = getFirestore(app);
 
             async function read_data(email){
-                    const read_tasks = [];
-                    const read_diary = [];
-                    const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
-                    const getDiary = await getDocs(collection(db, email + '/diary_entry/' + 'unfinished'));
-                    querySnapshot.forEach((doc) => {
-                    console.log(`${doc.data().text}`);
-                    read_tasks.push(doc.data().text);
-                    });
-                    console.log(read_tasks);
+                const read_tasks = [];
+                const read_diary = [];
+                const querySnapshot = await getDocs(collection(db, email + '/todo-items/' + 'unfinished'));
+                const getDiary = await getDocs(collection(db, email + '/diary_entry/' + 'unfinished'));
+                querySnapshot.forEach((doc) => {
+                console.log(`${doc.data().text}`);
+                read_tasks.push(doc.data().text);
+                });
 
-                    getDiary.forEach((doc) => {
-                    console.log(`${doc.data().text}`);
-                    read_diary.push(doc.data().text);
-                    });
-                    console.log(read_diary);
-                    //console.log(read_tasks.toString());
-                    return read_tasks, read_diary;
-                }
+                getDiary.forEach((doc) => {
+                console.log(`${doc.data().text}`);
+                read_diary.push(doc.data().text);
+                });
+                //console.log(read_diary);
+                //console.log([read_tasks, read_diary]);
+                return [read_tasks, read_diary];
+            }
 
             (async function(){              
-                const read_tasks = await read_data(email);
+                const saved = await read_data(email);
+                const read_tasks = saved[0];
+                const read_diary = saved[1];
+                console.log(read_tasks);               
+                console.log(read_diary);
+                document.getElementById("new-diary-entry").value += read_diary;
                 const input = document.getElementById("new-task");
                 const list_el = document.querySelector("#tasks");
                 for(var task of read_tasks){
@@ -187,7 +191,8 @@
                             task_edit_el.innerText = "Save";
                             task_input_el.removeAttribute("readonly");
                             task_input_el.focus();
-                        } else {
+                        } 
+                        else {
                             task_edit_el.innerText = "Edit";
                             task_input_el.setAttribute("readonly", "readonly");
                         }
@@ -199,6 +204,7 @@
                 }
                     
                 };
+                
             }
         )();
             
