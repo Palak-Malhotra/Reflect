@@ -55,45 +55,54 @@
                     Today's Statistics
                 </div>
                 <div class = "btn-stats">
+                    
                     <div class="water">
                         <i class="fa-solid fa-glass-water fa-xl"
                             id = "btn-stats-water" 
-                            onclick="add_water_icons()">
+                            onclick="count_water_icons()">
                         </i>   
-                        
-                        <div id="new-water-icons"></div>                                            
-                    </div>
+                        <span class="cross">X</span>
+                        <span class="cross" id="count-water-icons" style="font-size:xx-large; margin-top: 8px;">0</span>    
+                        <div style="font-size: large; padding: 20px; margin-top: 5px;">Water Break</div>
+                        <div class="switch-field">
+                            <input type="radio" id="water-15" name="switch-two" value="15-min" checked/>
+                            <label for="water-15">15 mins</label>
+                          <input type="radio" id="water-30" name="switch-two" value="30-min" />
+                            <label for="water-30">30 mins</label>
+                            <input type="radio" id="water-1" name="switch-two" value="1-hr"/>
+                            <label for="water-1">1 hour</label>
+                            <input type="radio" id="water-2" name="switch-two" value="2-hrs" />
+                            <label for="water-2">2 hours</label>
+                        </div>  
+                    
                     <div class="walk">
                         <i class="fa-solid fa-stopwatch fa-xl"
                             id = "btn-stats-walk"
-                            onclick="add_walk_icons()">
+                            onclick="count_walk_icons()">
                         </i>
-
-                        <div id="new-walk-icons"></div> 
+                        <span class="cross">X</span>
+                        <span class="cross" id="count-walk-icons" style="font-size:xx-large; margin-top: 8px;">0</span>                         
+                        <div style="font-size: large; padding: 20px; margin-top: 5px;">Walk Break</div>
+                        <div class="switch-field">
+                            <input type="radio" id="walk-15" name="switch-wo" value="15-min" checked/>
+                            <label for="walk-15">15 mins</label>
+                            <input type="radio" id="walk-30" name="switch-wo" value="30-min" />
+                            <label for="walk-30">30 mins</label>
+                            <input type="radio" id="walk-1" name="switch-wo" value="1-hr"/>
+                            <label for="walk-1">1 hour</label>
+                            <input type="radio" id="walk-2" name="switch-wo" value="2-hrs" />
+                            <label for="walk-2">2 hours</label>
+                        </div> 
+                        
                     </div>
+                    
+                
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- <div id="page" class="w-screen h-screen bg-white transition-colors duration-500 p-2 md:p-10">
-        <div id = "walk-modal" class="w-[80%] max-w-screen-md rounded-3xl bg-neutral-50 text-center antialiased px-5 md:px-20 py-10 shadow-2xl shadow-zinc-900 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h1 class="text-2xl lg:text-3xl font-bold text-neutral-900 my-4">
-                ITS TIME TO TAKE A BREAK !
-        </h1>
-            <p class="text-base lg:text-xl text-neutral-500">
-                Step away from the screen and take a quick walk. You can go walk to the nearest water cooler or just 
-                stretch out a little.
-            </p>
-            <button type="button" id = "close-walk-modal" class="px-8 py-4 mt-8 rounded-2xl text-neutral-50 bg-violet-800 hover:bg-violet-600 active:bg-violet-900 disabled:bg-neutral-900 ">
-                Register Here!
-            </button>
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="w-[16px] h-[16px] absolute right-6 top-6">
-                <path d="m2 2 12 12m0-12-12 12" class="stroke-2 stroke-current" />
-            </svg>
-            </div>
-        </div>
-    </div> -->
+
 
         <script type="module">
             // Import the functions you need from the SDKs you need
@@ -231,9 +240,7 @@
                         // ..
                         //console.log(errorCode + errorMessage)
                         alert(errorMessage);
-                    };
-
-                
+                    };                
             })
 
             document.getElementById("btn-diary-submit").addEventListener('click', function(){

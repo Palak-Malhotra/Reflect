@@ -66,20 +66,37 @@ window.addEventListener('load', () => {
 
 
 
-function add_water_icons(){
-    const water_element = document.createElement("i");
-    const attribute = document.createAttribute('class');
-    attribute.value = "fa-solid fa-glass-water";
-    water_element.setAttributeNode(attribute)
-    document.getElementById("new-water-icons").appendChild(water_element);
+function count_water_icons(){
+	const num_water_icons = document.getElementById('#count-water-icons')
+    console.log(num_water_icons);
 }
 
-function add_walk_icons(){
+function count_walk_icons(){
     const walk_element = document.createElement("i");
     const attribute = document.createAttribute('class');
     attribute.value = "fa-solid fa-stopwatch fa";
     walk_element.setAttributeNode(attribute);
     document.getElementById("new-walk-icons").appendChild(walk_element);
 
-
+ 
 }
+
+//TOGGLING NESTED ul
+$(".drop-down .selected a").click(function() {
+    $(".drop-down .options ul").toggle();
+});
+
+//SELECT OPTIONS AND HIDE OPTION AFTER SELECTION
+$(".drop-down .options ul li a").click(function() {
+    var text = $(this).html();
+    $(".drop-down .selected a span").html(text);
+    $(".drop-down .options ul").hide();
+}); 
+
+
+//HIDE OPTIONS IF CLICKED ANYWHERE ELSE ON PAGE
+$(document).bind('click', function(e) {
+    var $clicked = $(e.target);
+    if (! $clicked.parents().hasClass("drop-down"))
+        $(".drop-down .options ul").hide();
+});
