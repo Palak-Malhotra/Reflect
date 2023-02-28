@@ -67,36 +67,36 @@ window.addEventListener('load', () => {
 
 
 function count_water_icons(){
-	const num_water_icons = document.getElementById('#count-water-icons')
-    console.log(num_water_icons);
+	const num_water_icons = document.getElementById('count-water-icons').innerHTML;
+	document.getElementById('count-water-icons').innerHTML = Number(num_water_icons) + 1;
 }
 
 function count_walk_icons(){
-    const walk_element = document.createElement("i");
-    const attribute = document.createAttribute('class');
-    attribute.value = "fa-solid fa-stopwatch fa";
-    walk_element.setAttributeNode(attribute);
-    document.getElementById("new-walk-icons").appendChild(walk_element);
+    const num_water_icons = document.getElementById('count-walk-icons').innerHTML;
+	document.getElementById('count-walk-icons').innerHTML = Number(num_water_icons) + 1;
 
  
 }
 
-//TOGGLING NESTED ul
-$(".drop-down .selected a").click(function() {
-    $(".drop-down .options ul").toggle();
-});
+function showModal(){
+	var my_modal = document.getElementById("my_modal");
+	my_modal.style.display = "block";
+}
 
-//SELECT OPTIONS AND HIDE OPTION AFTER SELECTION
-$(".drop-down .options ul li a").click(function() {
-    var text = $(this).html();
-    $(".drop-down .selected a span").html(text);
-    $(".drop-down .options ul").hide();
-}); 
+function closeModal(){
+	var my_modal = document.getElementById("my_modal");
+	my_modal.style.display = "none";
+}
 
-
-//HIDE OPTIONS IF CLICKED ANYWHERE ELSE ON PAGE
-$(document).bind('click', function(e) {
-    var $clicked = $(e.target);
-    if (! $clicked.parents().hasClass("drop-down"))
-        $(".drop-down .options ul").hide();
-});
+//setTimeout(showModal,1000);
+// $(".modal-trigger").click(function(e){
+// 	e.preventDefault();
+// 	dataModal = $(this).attr("data-modal");
+// 	$("#" + dataModal).css({"display":"block"});
+// 	// $("body").css({"overflow-y": "hidden"}); //Prevent double scrollbar.
+//   });
+  
+//   $(".close-modal, .modal-sandbox").click(function(){
+// 	$(".modal").css({"display":"none"});
+// 	// $("body").css({"overflow-y": "auto"}); //Prevent double scrollbar.
+//   });

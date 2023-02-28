@@ -67,7 +67,7 @@
                         <div class="switch-field">
                             <input type="radio" id="water-15" name="switch-two" value="15-min" checked/>
                             <label for="water-15">15 mins</label>
-                          <input type="radio" id="water-30" name="switch-two" value="30-min" />
+                          <input type="radio" id="water-30" name="switch-two" value="30-min" onclick="showModal()" />
                             <label for="water-30">30 mins</label>
                             <input type="radio" id="water-1" name="switch-two" value="1-hr"/>
                             <label for="water-1">1 hour</label>
@@ -99,7 +99,35 @@
                 
                 </div>
             </div>
+            
         </div>
+    <div id="my_modal"> 
+                <center>
+                    <h2>
+                        Its time to take a water break !
+                    </h2>
+                    <img src="css/water-glass.png", alt="A glass of water">
+                    <div class = "btn-field">
+                        <button type = "button" id = "closeModalBtn" onclick="closeModal()"> Okay </button>
+                        <button type = "button" id = "okModalBtn" onclick="closeModal()"> Remind Me Later </button>
+                    </div>
+                </center>
+            </div>
+
+        <!-- <a href="#" class="modal-trigger" data-modal="modal-name">Modal open!</a> 
+            <div class="modal" id="modal-name">
+                <div class="modal-sandbox"></div>
+                <div class="modal-box">
+                    <div class="modal-header">
+                        <div class="close-modal">&#10006;</div> 
+                        <h1>Simple modal box</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dociendis sint error, repellat ut soluta doloremque, accusamus vitae placeat?</p>
+                        <button class="close-modal">Close!</button>
+                    </div>
+                </div>
+            </div> -->
     </main>
 
 
